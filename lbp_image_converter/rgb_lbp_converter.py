@@ -13,8 +13,7 @@ def get_pixel3d(img, center, x, y, z):
 
 def lbp_calculated_pixel3d(img, x, y, z):
     center = img[x][y][z]
-    val_ar = []
-    val_ar.append(get_pixel3d(img, center, x-1, y+1, z))     # top_right
+    val_ar = [get_pixel3d(img, center, x-1, y+1, z)]
     val_ar.append(get_pixel3d(img, center, x, y+1, z))       # right
     val_ar.append(get_pixel3d(img, center, x+1, y+1, z))     # bottom_right
     val_ar.append(get_pixel3d(img, center, x+1, y, z))       # bottom
@@ -26,8 +25,7 @@ def lbp_calculated_pixel3d(img, x, y, z):
     power_val = [1, 2, 4, 8, 16, 32, 64, 128]
     arr_1 = np.array(power_val)
     mularr = np.multiply(arr, arr_1)
-    sumarr = np.sum(mularr)
-    return sumarr
+    return np.sum(mularr)
 
 
 def convlbp3d(img):
